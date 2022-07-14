@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background: #fafafa;
+}
+
+body img {
+  width: 100%;
+}
+
+body li {
+  list-style: none;
+}
+
+body p {
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.02rem;
+  text-align: center;
+}
+
+body #element {
+  width: 90%;
+  margin: 0 auto 100px;
+}
+
+body .wrapper {
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  text-align: center;
+  top: 0;
+  z-index: 3;
+  padding: 0.8rem 0;
+}
+
+body .wrapper-title {
+  font-size: 5rem;
+  letter-spacing: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  body .wrapper-title {
+    font-size: 3.4rem;
+  }
+}
+
+body .wrapper-sub-title {
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  body .wrapper-sub-title {
+    font-size: 1.4rem;
+  }
+}
+
+body .is-load-list {
+  width: 42.96875vw;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  body .is-load-list {
+    width: 90%;
+    max-width: auto;
+  }
+}
+
+#end-message {
+  text-align: center;
+  width: 54.6875vw;
+  margin: 0 auto;
+  color: #333;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=style.css.map */

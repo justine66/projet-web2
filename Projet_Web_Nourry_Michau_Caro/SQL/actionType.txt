@@ -1,0 +1,37 @@
+Lexique :
+
+'X' 		= Valeur par défaut, ne sera changé que par une action ulterieure
+${ X } 	= variable imposé par le contexte (ex: mail de l'utilisateur, cds en cour d'anotation...
+${ X *} 	= variable saisi/choisi par l'utilisateur
+# X 		= Description de l'action
+
+
+#Selectionne la derniere annotation valide pour un id de gene donne
+SELECT * FROM Annotation WHERE idcds=${id} AND validation='Valide' ORDER BY dateversion DESC LIMIT 1;
+
+#Selectionne les derniere annotation+information pour un id de gene donne
+SELECT * FROM Annotation AS a,Cds 
+WHERE idcds='AN78607' 
+AND id=idcds 
+AND validation='Valide' 
+ORDER BY dateversion DESC;
+
+#Selectionne les cds en attente
+SELECT id,espece,souche FROM Cds WHERE etat='En attente';
+
+#Insertion attribution
+INSERT INTO Attribution(annot,idcds,attri) VALUES (${mail annotateur*},${id de cds*},${date d'attribution});
+UPDATE Cds SET etat='En cour' WHERE id=${id de cds*} AND etat='En attente';
+
+#Selectionne attribution perso
+SELECT idcds,attri FROM Attribution WHERE annot=${identifiant perso};
+
+#Insertion annotation
+INSERT INTO Annotation(idcds,mail,genename,gene_biotype,transcrit_biotype,gene_symbol,description,dateversion,validation) VALUES (${id cds},${identifiant perso},${nom du gene*},${type gene*},${type proteine*},${symbole du gene*},${descrition en detail*},${date},'En attente');
+
+#Selectionne toute les annotations en attente de validation
+SELECT * FROM Annotation WHERE validation='En attente' ORDER BY dateversion DESC;
+
+#Insertion de validation
+INSERT INTO Validation(mail,idcds,dateversion,commentaire) VALUES (${id perso},${id cds},${date d'annotation},${commentaire du validateur*});
+UPDATE Annotation SET etat=${etat} WHERE idcds=${idcds} AND dateversion=${date d'annotation};

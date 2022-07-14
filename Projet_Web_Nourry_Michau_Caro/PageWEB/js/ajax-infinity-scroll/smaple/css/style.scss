@@ -1,0 +1,97 @@
+
+$base : 1280;
+@function get_vw($size, $viewport:$base ){
+    $rate: 100 / $viewport;
+    @return $rate * $size * 1vw;
+}
+
+
+
+@mixin sp {
+    @media (max-width:768px) {
+        @content;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    position: relative;
+    font-family: 'Josefin Sans', sans-serif;
+    line-height: 1.5;
+    img {
+        width: 100%;
+    }
+    
+    li {
+        list-style: none;
+    }
+    p {
+        font-weight: 600;
+        font-size: 2rem;
+        letter-spacing: 0.02rem;
+        text-align: center;
+    }
+
+
+    #element {
+        width: 90%;
+        margin: 0 auto 100px;
+    }
+
+    .wrapper {
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        position: sticky;
+        text-align: center;
+        top: 0;
+        z-index: 3;
+        padding: 0.8rem 0;
+
+        &-title {
+            font-size: 5rem;
+            letter-spacing: 0.2rem;
+            @include sp(){
+                font-size: 3.4rem;
+            }
+        }
+        &-sub-title {
+            font-size: 2rem;
+            @include sp(){
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .is-load-list {
+        width: get_vw(550);
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 1rem 0;
+        @include sp(){
+            width: 90%;
+            max-width: auto;
+        }
+    }
+}
+
+
+// app
+
+
+
+#end-message {
+    text-align: center;
+    width: get_vw(700);
+    margin: 0 auto;
+    color: #333;
+    font-size: 2rem;
+}

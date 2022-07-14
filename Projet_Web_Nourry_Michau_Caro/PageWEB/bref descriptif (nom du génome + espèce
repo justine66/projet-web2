@@ -1,0 +1,13 @@
+bref descriptif (nom du génome + espèce + numéro chromosome)
+        génome
+        bouton vers blast
+        bouton extraction (récupérer le génome) annotation + cds + protéine + génome 
+        
+
+        bref descriptif (nom du gène + espèce + emplacement (coordonnées + sens + chromosome))
+        séquence du gène
+        séquence de la protéine traduite
+        description
+        bouton vers blast(gène)
+        bouton vers blast (protéine)
+        bouton extraction (récupérer le génome)

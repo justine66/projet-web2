@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="projet4.css">
+  <title>Inscription</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script>
+    	function envoie(){
+    		var prenom = document.getElementById("prénom").value;
+    		var mail = document.getElementById("email").value;
+    		var name = document.getElementById("nom").value;
+    		var tel = document.getElementById("telephone").value;
+    		var mdp = document.getElementById("mdp").value;
+    		var role = document.querySelector('input[name="role"]:checked').value;
+    		var date = new Date();
+    		date = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+
+    		if (role=='lecteur'){
+    			var etat='Valide';
+    		}else{
+    			var etat = 'En attente';
+    		}
+    		$.ajax({url: "envoie.php",
+					    data:{table: "utilisateur",
+					    	mail: mail,
+					    	mdp: mdp,
+					    	num: tel, 
+					    	prenom: prenom,
+					    	nom: name, 
+					    	etat: etat, 
+					    	date: date, 
+					    	role: role},
+					    success: function(result){
+					    	alert("Inscription validé");},
+					    error: function(){console.log("erreur envoie");}
+					  });
+		
+    		}
+    </script>
+</head>
+<body>
+  <h1>Formulaire d'inscription</h1>
+  
+  <div class = conteneur>
+	  <form action=connexion.php method="post">
+	  	Adresse email : <br>
+	  	<input type="email" id="email" placeholder="ex : toto.tutu@mail.com"> <br>
+		Prénom : <br>
+		<input type="text" id="prénom" placeholder="ex : Jean"> <br>
+		Nom de famille : <br>
+		<input type="text" id="nom" placeholder="ex : Dupont"> <br>
+		Numéro de téléphone : <br>
+		<input type="tel" id="telephone"> <br>
+		Mot de passe : <br>
+		<input type="password" id="mdp" name="mdp"> <br>
+		Rôle souhaité : <br>
+		<input type="radio" id="role1" name="role" value="validateur">
+		    <label for="role1">Validateur</label>
+
+		<input type="radio" id="role2" name="role" value="annotateur">
+		    <label for="role2">Annotateur</label>
+
+		<input type="radio" id="role3" name="role" value="lecteur">
+		    <label for="role3">Lecteur</label>
+		<br><br>
+			  
+		<input type="submit" value="Envoyer" onclick="envoie()" >
+	   </form>
+   </div>
+</body>
+</html>
